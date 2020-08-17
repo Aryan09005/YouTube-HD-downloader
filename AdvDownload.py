@@ -49,7 +49,7 @@ class AdvDownload():
                 sys.exit()
             self.compile()
         
-        
+
     def downloader(self, qual):
         '''Download audio and or video stream'''
         if qual == 'h':
@@ -111,10 +111,11 @@ class AdvDownload():
         platform = sys.platform
         if platform == 'linux':
             print('[+] Linux detected checking for ffmpeg installation')
-            res = sp.run('dpkg -s ffmpeg')
-            if res.returncode != 0:
+            res = subprocess.Popen('dpkg -s ffmpeg',shell=True).wait()
+            print('-'*100)
+            if res != 0:
                 print('ffmpeg not installed')
-                subprocess.Popen('sudo apt-get install ffmpeg',shell=True).wait()
+                subprocess.Popen('sudo apt-get install ffmpeg -y',shell=True).wait()
         elif platform == 'win32':
             print('[+] Windows detected checking for ffmpeg installation')
             if not os.path.exists('C:\FFMPEG\\ffmpeg.exe'):
