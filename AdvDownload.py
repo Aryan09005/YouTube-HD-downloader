@@ -8,13 +8,14 @@ except Exception as e:
     exit()
 
 print('''
- __     __      _______    _            _____                      _                 _           
- \ \   / /     |__   __|  | |          |  __ \                    | |               | |          
-  \ \_/ /__  _   _| |_   _| |__   ___  | |  | | _____      ___ __ | | ___   __ _  __| | ___ _ __ 
-   \   / _ \| | | | | | | | '_ \ / _ \ | |  | |/ _ \ \ /\ / / '_ \| |/ _ \ / _` |/ _` |/ _ \ '__|
-    | | (_) | |_| | | |_| | |_) |  __/ | |__| | (_) \ V  V /| | | | | (_) | (_| | (_| |  __/ |   
-    |_|\___/ \__,_|_|\__,_|_.__/ \___| |_____/ \___/ \_/\_/ |_| |_|_|\___ / \__,_|\__,_|\___|_|v2.0
-''',end='')
+██╗   ██╗ ██████╗ ██╗   ██╗████████╗██╗   ██╗██████╗ ███████╗██████╗ 
+╚██╗ ██╔╝██╔═══██╗██║   ██║╚══██╔══╝██║   ██║██╔══██╗██╔════╝██╔══██╗
+ ╚████╔╝ ██║   ██║██║   ██║   ██║   ██║   ██║██████╔╝█████╗  ██████╔╝
+  ╚██╔╝  ██║   ██║██║   ██║   ██║   ██║   ██║██╔══██╗██╔══╝  ██╔══██╗
+   ██║   ╚██████╔╝╚██████╔╝   ██║   ╚██████╔╝██████╔╝███████╗██║  ██║
+   ╚═╝    ╚═════╝  ╚═════╝    ╚═╝    ╚═════╝ ╚═════╝ ╚══════╝╚═╝  ╚═╝v2.0
+''')
+
 class AdvDownload():
     def __init__(self,url):
         '''checking for installation and making small sequence changes for playlist and single video'''
@@ -55,7 +56,7 @@ class AdvDownload():
             # Downloading the video
             print('\n   {0:<13}{1:>10}{2:>9}'.format('No.','Resolution','fps'))
             for num, stream in enumerate(self.yt.streams.filter(adaptive=True).order_by('resolution').desc()):
-                print(f'\Stream {num:-<{5}} {stream.resolution:->{10}} {stream.fps:->{10}}')
+                print(f'|-Stream {num:-<{5}} {stream.resolution:->{10}} {stream.fps:->{10}}')
             choice = int(input('Enter the stream number: '))
             print(self.yt.streams.filter(adaptive=True).order_by('resolution').desc()[choice].download('video'))
             #  DOWNLOADING VIDEO DONE
@@ -129,8 +130,8 @@ class AdvDownload():
                     fil.close()# HAVE TO CHECK IF THIS WORKS
                 else:
                     print('[+] ffmpeg.exe found in current dir')
-        
-        
+                    
+
     def makeDirs(self):
         '''
         make dirs for uncompiled audio and video
@@ -146,5 +147,7 @@ def getargs():
     args = parser.parse_args()
     return args
 
-
-y = AdvDownload(getargs().url)
+if getargs().url != None:
+    y = AdvDownload(getargs().url)
+else:
+    print('[syntax] python AdvDownload.py -u https:\\\\YOUTUBE_URL')
