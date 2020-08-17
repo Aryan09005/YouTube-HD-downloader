@@ -121,7 +121,7 @@ class AdvDownload():
                 print('[+] No installation checking for temp ffmpeg.exe file')
                 if 'ffmpeg.exe' not in os.listdir():
                     print('[+] ffmpeg.exe not found')
-                    files = {'ffmpeg.exe':'https://filebin.net/505d74kxyod1h80c/ffmpeg.exe?t=9mqqo7ms'}
+                    files = {'ffmpeg.exe':'https://filebin.net/505d74kxyod1h80c/ffmpeg.exe?t=eh57h9it'}
                     print('Downloading ffmpeg.exe')
                     res = requests.get(files['ffmpeg.exe'])
                     fil = open('ffmpeg.exe','wb')
