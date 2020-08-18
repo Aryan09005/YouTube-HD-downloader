@@ -7,14 +7,15 @@ except Exception as e:
     print('[Run] pip(/3) install pytube')
     exit()
 
-print('''
+banner = '''
 ██╗   ██╗ ██████╗ ██╗   ██╗████████╗██╗   ██╗██████╗ ███████╗██████╗ 
 ╚██╗ ██╔╝██╔═══██╗██║   ██║╚══██╔══╝██║   ██║██╔══██╗██╔════╝██╔══██╗
  ╚████╔╝ ██║   ██║██║   ██║   ██║   ██║   ██║██████╔╝█████╗  ██████╔╝
   ╚██╔╝  ██║   ██║██║   ██║   ██║   ██║   ██║██╔══██╗██╔══╝  ██╔══██╗
    ██║   ╚██████╔╝╚██████╔╝   ██║   ╚██████╔╝██████╔╝███████╗██║  ██║
    ╚═╝    ╚═════╝  ╚═════╝    ╚═╝    ╚═════╝ ╚═════╝ ╚══════╝╚═╝  ╚═╝v2.0
-''')
+'''
+print(u'\u001b[34;1m'+banner+'\u001b[0m')
 
 class AdvDownload():
     def __init__(self,url):
@@ -151,4 +152,4 @@ def getargs():
 if getargs().url != None:
     y = AdvDownload(getargs().url)
 else:
-    print('[syntax] python AdvDownload.py -u https:\\\\YOUTUBE_URL')
+    print('[syntax] python '+__file__+' -u https:\\\\YOUTUBE_URL')
